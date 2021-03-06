@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>啦啦啦啦啦啦啦啦</h1></br>
+<p th:text="${mess}"></p>
+<p>[[${mess}]]</p>
+  <h3>拼接</h3>
+<p th:text="'欢迎'+${mess}+'学习'"></p>
+<h3>拼接2</h3>
+<p th:text="|欢迎${mess}学习|"></p>
+<h3>判断--对</h3>
+<p th:if="${mess == 'hello'}">====对的===</p>
+<h3>判断--错--不显示</h3>
+<h3>判断--错</h3>
+<p th:unless="${mess == 'hell'}">====错的=======</p>
+<span th:text="${user.id}"></span></br>
+<span th:text="${user.age}"></span></br>
+<span th:text="${user.name}"></span></br>
+
+<table>
+    <tr>
+        <td>编号</td>
+        <td>id</td>
+        <td>name</td>
+        <td>age</td>
+    </tr>
+    <tr th:each="user,item:${list}">
+        <td th:text="${item.index}"></td>
+        <td >[[${user.id}]]</td>
+        <td >[[${user.name}]]</td>
+        <td >[[${user.age}]]</td>
+    </tr>
+</table>
+<h1>引入代码片段--方式1--insert--直接插入</h1>
+<div th:insert="~{foot :: my}"></div>
+<h1>引入代码片段--方式2--replace--替换原有的标签</h1>
+<div th:replace="~{foot :: my}"></div>
+<h1>引入代码片段--方式3--include--直接把代码放入里面，不带标签</h1>
+<div th:include="~{foot :: my}"></div>
+
+<h1>String操作--判断字符串是否为空</h1>
+<span th:if="${#strings.isEmpty(str)}">dddddd</span>
+<h1>String操作--字符串截取</h1>
+<span th:text="${#strings.substring(str,0,10)}"></span>
+<h1>String操作--字符串截取2</h1>
+<span th:text="${#strings.abbreviate(str,10)}"></span>
+<h1>时间格式</h1>
+<span th:text="${#dates.format(data,'yyyy-MM-dd HH:mm:ss')}"></span></br>
+<h1>数字格式</h1>
+<span th:text="|$${#numbers.formatDecimal(num,4,5)}|"></span></br>
+
+</br>
+<img th:src="${map.pic}" alt="">
+<img th:src="${map.pic2}" alt="">
+
+
+</body>
+</html>
