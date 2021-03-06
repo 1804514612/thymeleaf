@@ -11,7 +11,6 @@ public class Teacherss {
 
     public void setId(int id) {
         this.id = id;
-        String ids = "23412432";
     }
 
     public String getName() {
