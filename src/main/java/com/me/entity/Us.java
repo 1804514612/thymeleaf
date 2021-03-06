@@ -1,5 +1,5 @@
 package com.me.entity;
 
-public class User2 {
+public class Us {
   String name;
 }
